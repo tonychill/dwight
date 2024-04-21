@@ -27,7 +27,7 @@ export default function Example() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-12">
+        <div className="mx-auto max-w-2xl pt-32 sm:pt-48 lg:pt-12">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="hidden relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Announcing our next round of funding.{" "}
@@ -44,12 +44,12 @@ export default function Example() {
               width={800}
               height={200}
             />
-            <p className="-mt-12 text-lg leading-8 text-gray-600">
+            <p className="hidden -mt-24 text-lg leading-8 text-gray-600">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
               lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
               fugiat aliqua.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="hidden _flex mt-4  items-center justify-center gap-x-6">
               <a
                 href="#"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -70,6 +70,44 @@ export default function Example() {
                 "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
             }}
           />
+        </div>
+      </div>
+      <div className="mx-auto _mt-32 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+        <div>
+          <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
+            Phone
+          </h3>
+          <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
+            <p>1 (340) 344-1733</p>
+          </address>
+        </div>
+        <div>
+          <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
+            Email
+          </h3>
+          <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
+            <p>dwight.winston@gmail.com</p>
+          </address>
+        </div>
+        <div>
+          <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
+            Physical
+          </h3>
+          <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
+            <p>7363 Cynthia Pass</p>
+            <p>St. Thomas</p>
+            <p> Virgin Islands 00803</p>
+          </address>
+        </div>
+        <div>
+          <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
+            Mailing
+          </h3>
+          <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
+            <p>PO Box 111</p>
+            <p>St. Thomas</p>
+            <p> Virgin Islands 00803</p>
+          </address>
         </div>
       </div>
     </div>

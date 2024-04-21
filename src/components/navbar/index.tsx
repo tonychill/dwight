@@ -8,7 +8,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Navbar() {
   return (
     <div className="fixed top-0 w-full z-50">
       <Disclosure as="nav" className="bg-white shadow">
@@ -28,23 +28,23 @@ export default function Example() {
                     )}
                   </Disclosure.Button>
                 </div>
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="flex flex-shrink-0 items-center">
+                <div className="flex flex-1 items-center justify-end sm:items-stretch">
+                  <div className="flex flex-none ml-0 absolute left-0 top-4 _flex-shrink-0 items-center">
                     <Link href="/">
                       <img
                         className="h-8 w-auto"
-                        src="/video.png"
+                        src="/logo-wht-outline.png"
                         alt="D Winston Media"
                       />
                     </Link>
                   </div>
 
-                  <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                  <div className="sm:ml-6 sm:flex sm:space-x-8 sm">
                     {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
 
                     <a
                       href="/portfolio"
-                      className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                      className=" hidden _inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                     >
                       Portfolio
                     </a>
@@ -56,7 +56,7 @@ export default function Example() {
                     </a>
                   </div>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div className="hidden absolute inset-y-0 right-0 _flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <button
                     type="button"
                     className="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
