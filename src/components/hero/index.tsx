@@ -94,7 +94,7 @@ export default function Example() {
             Mailing
           </h3>
           <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
-            <p>PO Box 111</p>
+            <p>PO Box 305865</p>
             <p>St. Thomas</p>
             <p> Virgin Islands 00803</p>
           </address>
