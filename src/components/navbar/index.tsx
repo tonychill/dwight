@@ -50,7 +50,7 @@ export default function Navbar() {
                     </a>
                     <a
                       href="about"
-                      className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                      className="hidden _inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                     >
                       About us
                     </a>

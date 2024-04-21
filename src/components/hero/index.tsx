@@ -20,7 +20,7 @@ export default function Example() {
           aria-hidden="true"
         >
           <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#a6e5a1] to-[#005816] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style={{
               clipPath:
                 "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
@@ -73,7 +73,7 @@ export default function Example() {
         </div>
       </div>
       <div className="mx-auto _mt-32 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-        <div>
+        <div className="mx-auto ">
           <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
             Phone
           </h3>
@@ -87,16 +87,6 @@ export default function Example() {
           </h3>
           <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
             <p>dwight.winston@gmail.com</p>
-          </address>
-        </div>
-        <div>
-          <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
-            Physical
-          </h3>
-          <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
-            <p>7363 Cynthia Pass</p>
-            <p>St. Thomas</p>
-            <p> Virgin Islands 00803</p>
           </address>
         </div>
         <div>
