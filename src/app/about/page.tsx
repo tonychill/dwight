@@ -1,234 +1,372 @@
-import { type Metadata } from 'next'
-import Image from 'next/image'
-
-import { Border } from '@/components/Border'
-import { ContactSection } from '@/components/ContactSection'
-import { Container } from '@/components/Container'
-import { FadeIn, FadeInStagger } from '@/components/FadeIn'
-import { GridList, GridListItem } from '@/components/GridList'
-import { PageIntro } from '@/components/PageIntro'
-import { PageLinks } from '@/components/PageLinks'
-import { SectionIntro } from '@/components/SectionIntro'
-import { StatList, StatListItem } from '@/components/StatList'
-import imageAngelaFisher from '@/images/team/angela-fisher.jpg'
-import imageBenjaminRussel from '@/images/team/benjamin-russel.jpg'
-import imageBlakeReid from '@/images/team/blake-reid.jpg'
-import imageChelseaHagon from '@/images/team/chelsea-hagon.jpg'
-import imageDriesVincent from '@/images/team/dries-vincent.jpg'
-import imageEmmaDorsey from '@/images/team/emma-dorsey.jpg'
-import imageJeffreyWebb from '@/images/team/jeffrey-webb.jpg'
-import imageKathrynMurphy from '@/images/team/kathryn-murphy.jpg'
-import imageLeonardKrasner from '@/images/team/leonard-krasner.jpg'
-import imageLeslieAlexander from '@/images/team/leslie-alexander.jpg'
-import imageMichaelFoster from '@/images/team/michael-foster.jpg'
-import imageWhitneyFrancis from '@/images/team/whitney-francis.jpg'
-import { loadArticles } from '@/lib/mdx'
-
-function Culture() {
-  return (
-    <div className="mt-24 rounded-4xl bg-neutral-950 py-24 sm:mt-32 lg:mt-40 lg:py-32">
-      <SectionIntro
-        eyebrow="Our culture"
-        title="Balance your passion with your passion for life."
-        invert
-      >
-        <p>
-          We are a group of like-minded people who share the same core values.
-        </p>
-      </SectionIntro>
-      <Container className="mt-16">
-        <GridList>
-          <GridListItem title="Loyalty" invert>
-            Our team has been with us since the beginning because none of them
-            are allowed to have LinkedIn profiles.
-          </GridListItem>
-          <GridListItem title="Trust" invert>
-            We don’t care when our team works just as long as they are working
-            every waking second.
-          </GridListItem>
-          <GridListItem title="Compassion" invert>
-            You never know what someone is going through at home and we make
-            sure to never find out.
-          </GridListItem>
-        </GridList>
-      </Container>
-    </div>
-  )
-}
-
-const team = [
-  {
-    title: 'Leadership',
-    people: [
-      {
-        name: 'Leslie Alexander',
-        role: 'Co-Founder / CEO',
-        image: { src: imageLeslieAlexander },
-      },
-      {
-        name: 'Michael Foster',
-        role: 'Co-Founder / CTO',
-        image: { src: imageMichaelFoster },
-      },
-      {
-        name: 'Dries Vincent',
-        role: 'Partner & Business Relations',
-        image: { src: imageDriesVincent },
-      },
+/*
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
     ],
+  }
+  ```
+*/
+"use client";
+import { useState } from "react";
+import Contact from "@/components/contact";
+const timeline = [
+  {
+    name: "Founded company",
+    description:
+      "Nihil aut nam. Dignissimos a pariatur et quos omnis. Aspernatur asperiores et dolorem dolorem optio voluptate repudiandae.",
+    date: "Aug 2021",
+    dateTime: "2021-08",
   },
   {
-    title: 'Team',
-    people: [
-      {
-        name: 'Chelsea Hagon',
-        role: 'Senior Developer',
-        image: { src: imageChelseaHagon },
-      },
-      {
-        name: 'Emma Dorsey',
-        role: 'Senior Designer',
-        image: { src: imageEmmaDorsey },
-      },
-      {
-        name: 'Leonard Krasner',
-        role: 'VP, User Experience',
-        image: { src: imageLeonardKrasner },
-      },
-      {
-        name: 'Blake Reid',
-        role: 'Junior Copywriter',
-        image: { src: imageBlakeReid },
-      },
-      {
-        name: 'Kathryn Murphy',
-        role: 'VP, Human Resources',
-        image: { src: imageKathrynMurphy },
-      },
-      {
-        name: 'Whitney Francis',
-        role: 'Content Specialist',
-        image: { src: imageWhitneyFrancis },
-      },
-      {
-        name: 'Jeffrey Webb',
-        role: 'Account Coordinator',
-        image: { src: imageJeffreyWebb },
-      },
-      {
-        name: 'Benjamin Russel',
-        role: 'Senior Developer',
-        image: { src: imageBenjaminRussel },
-      },
-      {
-        name: 'Angela Fisher',
-        role: 'Front-end Developer',
-        image: { src: imageAngelaFisher },
-      },
-    ],
+    name: "Secured $65m in funding",
+    description:
+      "Provident quia ut esse. Vero vel eos repudiandae aspernatur. Cumque minima impedit sapiente a architecto nihil.",
+    date: "Dec 2021",
+    dateTime: "2021-12",
   },
-]
+  {
+    name: "Released beta",
+    description:
+      "Sunt perspiciatis incidunt. Non necessitatibus aliquid. Consequatur ut officiis earum eum quia facilis. Hic deleniti dolorem quia et.",
+    date: "Feb 2022",
+    dateTime: "2022-02",
+  },
+  {
+    name: "Global launch of product",
+    description:
+      "Ut ipsa sint distinctio quod itaque nam qui. Possimus aut unde id architecto voluptatem hic aut pariatur velit.",
+    date: "Dec 2022",
+    dateTime: "2022-12",
+  },
+];
+const jobOpenings = [
+  {
+    id: 1,
+    role: "Full-time designer",
+    href: "#",
+    description:
+      "Quos sunt ad dolore ullam qui. Enim et quisquam dicta molestias. Corrupti quo voluptatum eligendi autem labore.",
+    salary: "$75,000 USD",
+    location: "San Francisco, CA",
+  },
+  {
+    id: 2,
+    role: "Laravel developer",
+    href: "#",
+    description:
+      "Et veniam et officia dolorum rerum. Et voluptas consequatur magni sapiente amet voluptates dolorum. Ut porro aut eveniet.",
+    salary: "$125,000 USD",
+    location: "San Francisco, CA",
+  },
+  {
+    id: 3,
+    role: "React Native developer",
+    href: "#",
+    description:
+      "Veniam ipsam nisi quas architecto eos non voluptatem in nemo. Est occaecati nihil omnis delectus illum est.",
+    salary: "$105,000 USD",
+    location: "San Francisco, CA",
+  },
+];
+export default function Example() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-function Team() {
   return (
-    <Container className="mt-24 sm:mt-32 lg:mt-40">
-      <div className="space-y-24">
-        {team.map((group) => (
-          <FadeInStagger key={group.title}>
-            <Border as={FadeIn} />
-            <div className="grid grid-cols-1 gap-6 pt-12 sm:pt-16 lg:grid-cols-4 xl:gap-8">
-              <FadeIn>
-                <h2 className="font-display text-2xl font-semibold text-neutral-950">
-                  {group.title}
+    <div className="bg-white">
+      <main className="isolate">
+        {/* Hero section */}
+        <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14">
+          <div
+            className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96"
+            aria-hidden="true"
+          />
+          <div className="hidden mx-auto max-w-7xl px-6 pt-32 lg:px-8">
+            <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
+              <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:col-span-2 xl:col-auto">
+                An Emmy Nominated Production Studio.
+              </h1>
+              <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
+                <p className="text-lg leading-8 text-gray-600">
+                  Founded in 2015 by Emmy Nominated Dwight Winston, D. Winston
+                  Media is your premier destination for top-notch video
+                  production and media services. With a passion for storytelling
+                  and a commitment to excellence, we&apos;re dedicated to bringing
+                  your vision to life with creativity, precision, and
+                  unparalleled expertise.
+                </p>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1567532900872-f4e906cbf06a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1280&q=80"
+                alt=""
+                className="mt-4 aspect-[6/5] w-full max-w-lg rounded-2xl object-cover  
+                         lg:max-w-none xl:row-span-2 xl:row-end-2 "
+              />
+            </div>
+          </div>
+          <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
+        </div>
+
+        {/* Logo cloud */}
+        <div className="hidden mx-auto mt-32 max-w-7xl sm:mt-40 sm:px-6 lg:px-8">
+          <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+            <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Bringing ideas to reality
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
+              Aliquip reprehenderit incididunt amet quis fugiat ut velit. Sit
+              occaecat labore proident cillum in nisi adipisicing officia
+              excepteur tempor deserunt.
+            </p>
+            <div className="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:max-w-4xl lg:grid-cols-5">
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg"
+                alt="Transistor"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg"
+                alt="Reform"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg"
+                alt="Tuple"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg"
+                alt="SavvyCal"
+                width={158}
+                height={48}
+              />
+              <img
+                className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+                src="https://tailwindui.com/img/logos/158x48/statamic-logo-white.svg"
+                alt="Statamic"
+                width={158}
+                height={48}
+              />
+            </div>
+            <div
+              className="absolute -top-24 right-0 -z-10 transform-gpu blur-3xl"
+              aria-hidden="true"
+            >
+              <div
+                className="aspect-[1404/767] w-[87.75rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-25"
+                style={{
+                  clipPath:
+                    "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Content section */}
+        <div className="mt-24 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
+              <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  Bringing your ideas to reality
                 </h2>
-              </FadeIn>
-              <div className="lg:col-span-3">
-                <ul
-                  role="list"
-                  className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8"
-                >
-                  {group.people.map((person) => (
-                    <li key={person.name}>
-                      <FadeIn>
-                        <div className="group relative overflow-hidden rounded-3xl bg-neutral-100">
-                          <Image
-                            alt=""
-                            {...person.image}
-                            className="h-96 w-full object-cover grayscale transition duration-500 motion-safe:group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/0 to-40% p-6">
-                            <p className="font-display text-base/6 font-semibold tracking-wide text-white">
-                              {person.name}
-                            </p>
-                            <p className="mt-2 text-sm text-white">
-                              {person.role}
-                            </p>
-                          </div>
-                        </div>
-                      </FadeIn>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-6 text-xl leading-8 text-gray-600">
+                  We specialize in a wide range of services to meet all your
+                  media needs including video production, drone piloting,
+                  editing, directing, and more. Our team of experts is dedicated
+                  to bringing your vision to life with creativity, precision,
+                  and unparalleled expertise.
+                </p>
+                <p className="hidden mt-6 text-base leading-7 text-gray-600">
+                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
+                  qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
+                  occaecat fugiat. Quasi aperiam sit non sit neque
+                  reprehenderit.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
+                <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
+                  <img
+                    src="https://images.unsplash.com/photo-1670272502246-768d249768ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80"
+                    alt=""
+                    className="aspect-[7/3] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                  />
+                </div>
+                <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
+                  <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
+                    <img
+                      src="https://images.unsplash.com/photo-1605656816944-971cd5c1407f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80"
+                      alt=""
+                      className="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
+                    />
+                  </div>
+                  <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
+                    <img
+                      src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&h=842&q=80"
+                      alt=""
+                      className="aspect-[7/4] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
+                    />
+                  </div>
+                  <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
+                    <img
+                      src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80"
+                      alt=""
+                      className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-          </FadeInStagger>
-        ))}
-      </div>
-    </Container>
-  )
-}
-
-export const metadata: Metadata = {
-  title: 'About Us',
-  description:
-    'We believe that our strength lies in our collaborative approach, which puts our clients at the center of everything we do.',
-}
-
-export default async function About() {
-  let blogArticles = (await loadArticles()).slice(0, 2)
-
-  return (
-    <>
-      <PageIntro eyebrow="About us" title="Our strength is collaboration">
-        <p>
-          We believe that our strength lies in our collaborative approach, which
-          puts our clients at the center of everything we do.
-        </p>
-        <div className="mt-10 max-w-2xl space-y-6 text-base">
-          <p>
-            Studio was started by three friends who noticed that developer
-            studios were charging clients double what an in-house team would
-            cost. Since the beginning, we have been committed to doing things
-            differently by charging triple instead.
-          </p>
-          <p>
-            At Studio, we’re more than just colleagues — we’re a family. This
-            means we pay very little and expect people to work late. We want our
-            employees to bring their whole selves to work. In return, we just
-            ask that they keep themselves there until at least 6:30pm.
-          </p>
+          </div>
         </div>
-      </PageIntro>
-      <Container className="mt-16">
-        <StatList>
-          <StatListItem value="35" label="Underpaid employees" />
-          <StatListItem value="52" label="Placated clients" />
-          <StatListItem value="$25M" label="Invoices billed" />
-        </StatList>
-      </Container>
 
-      <Culture />
+        {/* Stats */}
+        <div className="mx-auto mt-12 md:mt-24 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Proven results
+            </h2>
+            <p className="mt-6 text-base leading-7 text-gray-600">
+              With a proven track record of success and a client-focused
+              approach, we&apos;ve had the privilege of working with a diverse range
+              of clients across various industries. Whether it&apos;s a corporate
+              video, commercial, documentary, music video, reality TV show, real
+              estate video, or film project, we approach each undertaking with
+              the same level of dedication and passion, striving to deliver
+              results that resonate with your audience and drive your message
+              home.
+            </p>
+          </div>
+          <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
+            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+              <p className="flex-none text-3xl font-bold tracking-tight text-gray-900">
+                250k
+              </p>
+              <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
+                <p className="text-lg font-semibold tracking-tight text-gray-900">
+                  Users on the platform
+                </p>
+                <p className="mt-2 text-base leading-7 text-gray-600">
+                  Vel labore deleniti veniam consequuntur sunt nobis.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-900 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44">
+              <p className="flex-none text-3xl font-bold tracking-tight text-white">
+                $8.9 billion
+              </p>
+              <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
+                <p className="text-lg font-semibold tracking-tight text-white">
+                  We’re proud that our customers have made over $8 billion in
+                  total revenue.
+                </p>
+                <p className="mt-2 text-base leading-7 text-gray-400">
+                  Eu duis porta aliquam ornare. Elementum eget magna egestas.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-indigo-600 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
+              <p className="flex-none text-3xl font-bold tracking-tight text-white">
+                401,093
+              </p>
+              <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
+                <p className="text-lg font-semibold tracking-tight text-white">
+                  Transactions this year
+                </p>
+                <p className="mt-2 text-base leading-7 text-indigo-200">
+                  Eu duis porta aliquam ornare. Elementum eget magna egestas. Eu
+                  duis porta aliquam ornare.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <Team />
+        {/* Join us section */}
+        <div className="hidden mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+          <div className="mx-auto flex max-w-2xl flex-col items-end justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row">
+            <div className="w-full lg:max-w-lg lg:flex-auto">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                We’re always looking for awesome people to join us
+              </h2>
+              <p className="mt-6 text-xl leading-8 text-gray-600">
+                Diam nunc lacus lacus aliquam turpis enim. Eget hac velit est
+                euismod lacus. Est non placerat nam arcu. Cras purus nibh cursus
+                sit eu in id.
+              </p>
+              <img
+                src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1344&h=1104&q=80"
+                alt=""
+                className="mt-16 aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover lg:aspect-auto lg:h-[34.5rem]"
+              />
+            </div>
+            <div className="w-full lg:max-w-xl lg:flex-auto">
+              <h3 className="sr-only">Job openings</h3>
+              <ul className="-my-8 divide-y divide-gray-100">
+                {jobOpenings.map((opening) => (
+                  <li key={opening.id} className="py-8">
+                    <dl className="relative flex flex-wrap gap-x-3">
+                      <dt className="sr-only">Role</dt>
+                      <dd className="w-full flex-none text-lg font-semibold tracking-tight text-gray-900">
+                        <a href={opening.href}>
+                          {opening.role}
+                          <span
+                            className="absolute inset-0"
+                            aria-hidden="true"
+                          />
+                        </a>
+                      </dd>
+                      <dt className="sr-only">Description</dt>
+                      <dd className="mt-2 w-full flex-none text-base leading-7 text-gray-600">
+                        {opening.description}
+                      </dd>
+                      <dt className="sr-only">Salary</dt>
+                      <dd className="mt-4 text-base font-semibold leading-7 text-gray-900">
+                        {opening.salary}
+                      </dd>
+                      <dt className="sr-only">Location</dt>
+                      <dd className="mt-4 flex items-center gap-x-3 text-base leading-7 text-gray-500">
+                        <svg
+                          viewBox="0 0 2 2"
+                          className="h-0.5 w-0.5 flex-none fill-gray-300"
+                          aria-hidden="true"
+                        >
+                          <circle cx={1} cy={1} r={1} />
+                        </svg>
+                        {opening.location}
+                      </dd>
+                    </dl>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex border-t border-gray-100 pt-8">
+                <a
+                  href="#"
+                  className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                >
+                  View all openings <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <PageLinks
-        className="mt-24 sm:mt-32 lg:mt-40"
-        title="From the blog"
-        intro="Our team of experienced designers and developers has just one thing on their mind; working on your ideas to draw a smile on the face of your users worldwide. From conducting Brand Sprints to UX Design."
-        pages={blogArticles}
-      />
-
-      <ContactSection />
-    </>
-  )
+        {/* Contact us section */}
+        <Contact />
+      </main>
+    </div>
+  );
 }
